@@ -1,9 +1,6 @@
-import { Card } from "../../ui/dashboard/cards";
 import RevenueChart from "../../ui/dashboard/revenue-chart";
 import LatestInvoices from "../../ui/dashboard/latest-invoices";
 import { lusitana } from "../../ui/fonts";
-import { revenue } from "../../lib/placeholder-data";
-import { fetchCardData } from "../../lib/data";
 import { Suspense } from "react";
 import { LatestInvoicesSkeleton, RevenueChartSkeleton } from "@/app/ui/skeletons";
 import CardWrapper from "../../ui/dashboard/cards";

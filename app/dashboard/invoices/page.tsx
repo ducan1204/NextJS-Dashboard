@@ -4,8 +4,13 @@ import Search from "@/app/ui/search";
 import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
 import { Suspense } from "react";
 import Table from '@/app/ui/invoices/table';
-import { fetchFilteredInvoices, fetchInvoicesPages } from "@/app/lib/data";
+import { fetchInvoicesPages } from "@/app/lib/data";
 import Pagination from "@/app/ui/invoices/pagination";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Invoices'
+}
 
 export default async function Page(props: {
   searchParams?: Promise<{
