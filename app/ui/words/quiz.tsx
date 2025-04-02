@@ -7,9 +7,10 @@ export default function Quiz() {
     const [selectedAnswer, setSelectedAnswer] = useState("");
     const [feedback, setFeedback] = useState("");
     const [loading, setLoading] = useState(true);
+    const host = process.env.BACKEND_HOST;
 
     useEffect(() => {
-        fetch("http://localhost:11234/words/quiz")
+        fetch(`${host}/words/quiz`)
             .then((res) => res.json())
             .then((data) => {
                 setQuestion(data.word);
@@ -31,7 +32,7 @@ export default function Quiz() {
     };
 
     const newQuiz = async () => {
-        await fetch("http://localhost:11234/words/quiz").then((res) => res.json()).then((data) => {
+        await fetch(`${host}/words/quiz`).then((res) => res.json()).then((data) => {
             setQuestion(data.word);
             setMeanings(data.meanings);
             setFeedback("");
