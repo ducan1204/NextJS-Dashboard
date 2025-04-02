@@ -7,8 +7,8 @@ export default function Quiz() {
     const [selectedAnswer, setSelectedAnswer] = useState("");
     const [feedback, setFeedback] = useState("");
     const [loading, setLoading] = useState(true);
-    const host = process.env.BACKEND_HOST;
-
+    const host = process.env.NEXT_PUBLIC_BACKEND_HOST;
+    console.log(host);
     useEffect(() => {
         fetch(`${host}/words/quiz`)
             .then((res) => res.json())
@@ -20,7 +20,7 @@ export default function Quiz() {
     }, []);
 
     const checkAnswer = async (answer: string) => {
-        const response = await fetch("http://localhost:11234/words/check", {
+        const response = await fetch(`${host}/words/check`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
