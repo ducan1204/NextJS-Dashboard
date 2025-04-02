@@ -10,14 +10,23 @@ export default function Quiz() {
     const host = process.env.NEXT_PUBLIC_BACKEND_HOST;
     console.log(host);
     useEffect(() => {
+        if (!host) return;
         fetch(`${host}/words/quiz`)
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) throw new Error("Failed to fetch");
+                return res.json();
+            })
             .then((data) => {
                 setQuestion(data.word);
-                setLoading(false);
                 setMeanings(data.meanings);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error("Fetch error:", err);
+                setFeedback("Failed to load question. Please try again.");
+                setLoading(false);
             });
-    }, []);
+    }, [host]);
 
     const checkAnswer = async (answer: string) => {
         const response = await fetch(`${host}/words/check`, {
