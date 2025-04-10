@@ -55,9 +55,9 @@ export default function Quiz() {
     return (
         <div>
             <div className="max-w-md mx-auto p-4 rounded shadow-md">
-                <h2 className="text-lg font-semibold">What is the correct answer?</h2>
-                <p className="italic my-2">{question}</p>
-                <div className="grid grid-cols-2 gap-2">
+                <h2 className="text-lg font-semibold text-center">What is the correct answer?</h2>
+                <p className="italic my-2 text-center">{question}</p>
+                <div className="grid grid-cols-2 gap-6">
                     {meanings.map((meaning: string, index: number) => (
                         <button
                             key={index}
