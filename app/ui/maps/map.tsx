@@ -57,6 +57,7 @@ export default function Map() {
             `${process.env.NEXT_PUBLIC_BACKEND_HOST}/locations`
           );
           const locations = await res.json();
+          console.log(locations);
 
           locations.forEach((location: Location) => {
             L.marker([
